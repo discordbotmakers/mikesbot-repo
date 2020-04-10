@@ -14,7 +14,7 @@ module.exports={
        if(!message.member.permissions.has("KICK_MEMBERS"))return message.channel.send("Invalid permissions. Requires\n ```CSS\n kick members\n ```")
        User.kick(Reason)
        const kickembed = new MessageEmbed()
-       kickembed.setTitle("Mmember Kicked")
+       kickembed.setTitle("Member Kicked")
        kickembed.setDescription(`<@${message.author.id}> has kicked ${bot.users.cache.get(User.id).username}`)
        kickembed.addField(`Moderator`, `${message.author.tag}`)
        kickembed.addField(`Moderator ID`, `${message.author.id}`)

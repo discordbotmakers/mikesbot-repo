@@ -1,7 +1,7 @@
 const {Collection, Client, Discord} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({
-    disableEveryone: true
+    disableEveryone: false
 });
 const config = require('./config.json')
 const prefix = config.prefix
@@ -14,7 +14,7 @@ bot.categories = fs.readdirSync("./commands/");
     require(`./handlers/${handler}`)(bot);
 });
 bot.on('ready',()=>{
-    bot.user.setActivity(`Premium Bot for Mike!`, {type: "WATCHING"});
+    bot.user.setActivity(`${bot.prefix}help`, {type: "WATCHING"}, {url: "https://discord.gg/kugRv6Y"});
     console.log(`${bot.user.username} is working ggs my guy`)
 
 })
@@ -28,6 +28,6 @@ bot.on('message', async message=>{
     if(cmd.length == 0 ) return;
     const command = bot.commands.get(cmd)
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
-    if(command) command.run(bot, message, args)
+    if(command) command.run(bot, message,args)
 })
 bot.login(token)

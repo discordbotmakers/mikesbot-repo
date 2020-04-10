@@ -8,7 +8,7 @@ module.exports={
 
         if(args[0].toLowerCase()=='create'){
             let rName = message.content.split(`${bot.prefix}role create `).join("")
-            let rColor
+            let rColor;
             args.forEach(arg=>{
                 if(arg.startsWith("#")){
                     rColor=arg
@@ -44,7 +44,7 @@ module.exports={
         Embed.setThumbnail(message.author.displayAvatarURL())
         message.channel.send(Embed)
     }else if(args[0].toLowerCase()=='delete'){
-        let roleDelete = message.guild.role.cache.get(args[1])||message.guild.roles.cache.find(r=>rName==args[1])
+        let roleDelete = message.guild.role.cache.get(args[1])||message.guild.roles.cache.find(r=>r.name==args[1])
         if(!roleDelete)return message.channel.send(`Error while trying to delete the role. If the error keeps continuing, make sure to check for valid spelling,caps,formatting,gramatical errors. Otherwise restart the client.`)
         const deleteembed = new MessageEmbed();
         deleteembed.setTitle("Role Deleted")
