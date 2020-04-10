@@ -1,7 +1,29 @@
-const {MessageEmbed} = require('discord.js');
+const {MessageEmbed} = require('discord.js')
 module.exports={
     name: "kick",
-    description: "Kick a mentioned user",
+    description: "Kick a mentioned user or their id",
     category: "moderation",
-    usage: "<User name"
+    usage: ".kick <User ID> (reason)",
+    run: async(bot,message,args)=>{
+       if(!args[0])return message.channel.send("Invalid Command Usage: Try\n ``` .kick <User ID> (reason)\n ```") 
+       let User = message.guild.members.cache.get(args[0])
+       if(!User)return message.channel.send("Error while trying to find the user/user id. Please try again.")
+       let Reason = message.content.split(`.kick ${User.id} `)
+       if(!args[1]) return message.channel.send("No reason specified")
+       if(!User.kickable)return message.channel.send("Error while trying to kick the user. Check to see if it's a valid user id, if the user is in the guild, or if the user has a higher role.")
+       if(!message.member.permissions.has("KICK_MEMBERS"))return message.channel.send("Invalid permissions. Requires\n ```CSS\n kick members\n ```")
+       User.kick(Reason)
+       const kickembed = new MessageEmbed()
+       kickembed.setTitle("Mmember Kicked")
+       kickembed.setDescription(`<@${message.author.id}> has kicked ${bot.users.cache.get(User.id).username}`)
+       kickembed.addField(`Moderator`, `${message.author.tag}`)
+       kickembed.addField(`Moderator ID`, `${message.author.id}`)
+       kickembed.addField(`Member Kicked`, `${bot.users.cache.get(User.id).tag}`)
+       kickembed.addField(`Kicked member ID`, `${bot.users.cache.get(User.id).id}`)
+       kickembed.setColor("RANDOM")
+       kickembed.addField(`Reason`, `${Reason}`)
+       kickembed.setFooter("Moderation bot made by Mike H.")
+       kickembed.setTimestamp()
+       message.channel.send(kickembed)
+    }
 }

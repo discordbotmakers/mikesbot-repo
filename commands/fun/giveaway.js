@@ -26,7 +26,10 @@ module.exports={
         function winner(msg){
             let winner = msg.reactions.cache.get('🎉').users.cache.random().id
             return winner
+            
+
         }
+            
         function reactions(msg){
             return msg.reactions.cache.size
         }
@@ -37,6 +40,10 @@ module.exports={
             winembed.setDescription(`The winner is <@${winner(msg)}> . Congrats! You won the prize:  **${prize}**!`);
             message.channel.send(winembed)
         }, time);
+        
+        
+        
+        
 
     }
-}
+} 

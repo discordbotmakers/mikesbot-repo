@@ -28,6 +28,6 @@ bot.on('message', async message=>{
     if(cmd.length == 0 ) return;
     const command = bot.commands.get(cmd)
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
-    if(command) command.run(bot,message,args)
+    if(command) command.run(bot, message, args)
 })
 bot.login(token)
