@@ -1,13 +1,13 @@
+require('dotenv').config();
 const {Collection, Client, Discord} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({
     disableEveryone: false
 });
+const prefix = '.'
 
-const prefix = prefix
-const token = token
 bot.commands = new Collection();
-bot.prefix = prefix,
+bot.prefix = '.',
 bot.aliases = new Collection();
 bot.categories = fs.readdirSync("./commands/");
 ["command"].forEach(handler=>{
@@ -15,7 +15,7 @@ bot.categories = fs.readdirSync("./commands/");
 });
 bot.on('ready',()=>{
     bot.user.setActivity(`${bot.prefix}help`, {type: "WATCHING"}, {url: "https://discord.gg/kugRv6Y"});
-    console.log(`${bot.user.username} is now online! Run ${bot.prefix}help for any help!`)
+    console.log(`${bot.user.tag} is online! Run ${bot.prefix}help for any help`)
 
 })
 bot.on('message', async message=>{
@@ -30,4 +30,4 @@ bot.on('message', async message=>{
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
     if(command) command.run(bot, message,args)
 })
-bot.login(token)
+bot.login(process.env.BOT_TOKEN)
