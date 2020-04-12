@@ -15,7 +15,7 @@ bot.categories = fs.readdirSync("./commands/");
 });
 bot.on('ready',()=>{
     bot.user.setActivity(`${bot.prefix}help`, {type: "WATCHING"}, {url: "https://discord.gg/kugRv6Y"});
-    console.log(`${bot.user.username} is working ggs my guy`)
+    console.log(`${bot.user.username} is now online! Run ${bot.prefix}help for any help!`)
 
 })
 bot.on('message', async message=>{

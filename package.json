@@ -1,7 +1,7 @@
 {
-  "name": "giveawaybot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "mikesbot",
+  "version": "1.0.3",
+  "description": "Simple moderation and utility bot made by Mike H. !",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,5 +16,14 @@
     "common-tags": "^1.8.0",
     "discord.js": "^12.1.1",
     "ms": "^2.1.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikebots/mikesbot-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikebots/mikesbot-repo/issues"
+  },
+  "homepage": "https://github.com/mikebots/mikesbot-repo#readme"
 }

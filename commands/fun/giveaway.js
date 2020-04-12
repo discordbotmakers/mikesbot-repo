@@ -9,6 +9,7 @@ module.exports={
         if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You need the `Manage Server` permission in order to execute a giveaway!");
         let timev = message.content.slice(bot.prefix.length+9)
         if(!timev) return message.channel.send("You didn't specify a time in ms");
+        
         let time = parseInt(timev,10)
         if(time<= 5000){
             return message.channel.send('Your time has to be longer than 5seconds!')
@@ -34,11 +35,11 @@ module.exports={
             return msg.reactions.cache.size
         }
         setTimeout(() => {
+            
             if(reactions(msg) <= 0) return message.channel.send("I can't host a giveaway with less than 1 reaction")
-            let winembed = new MessageEmbed();
-            winembed.setTitle(`Congrats!`);
-            winembed.setDescription(`The winner is <@${winner(msg)}> . Congrats! You won the prize:  **${prize}**!`);
-            message.channel.send(winembed)
+            
+            message.channel.send(`The winner is <@${winner(msg)}> . Congrats! You won the prize:  **${prize}**!`);
+            
         }, time);
         
         

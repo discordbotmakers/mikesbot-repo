@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js')
 module.exports={
     name: "role",
-    description: "Create a role with this command!",
+    description: "Create/delete a role with this command!",
     category: "utility",
     run: async(bot,message,args)=>{
         if(!message.member.permissions.has("MANAGE_ROLES")) return message.channel.send(`You don't have the manage roles permission ticked on your role in order for you to execute this command. Error`)
@@ -44,8 +44,9 @@ module.exports={
         Embed.setThumbnail(message.author.displayAvatarURL())
         message.channel.send(Embed)
     }else if(args[0].toLowerCase()=='delete'){
-        let roleDelete = message.guild.role.cache.get(args[1])||message.guild.roles.cache.find(r=>r.name==args[1])
+        let roleDelete = message.guild.roles.cache.get(args[1])||message.guild.roles.cache.find(r=>r.name==args[1])
         if(!roleDelete)return message.channel.send(`Error while trying to delete the role. If the error keeps continuing, make sure to check for valid spelling,caps,formatting,gramatical errors. Otherwise restart the client.`)
+        roleDelete.delete()
         const deleteembed = new MessageEmbed();
         deleteembed.setTitle("Role Deleted")
         deleteembed.setDescription(`${message.author.tag} deleted the role "**${roleDelete.name}**"`)
