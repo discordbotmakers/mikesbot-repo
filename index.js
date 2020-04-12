@@ -3,9 +3,9 @@ const fs = require('fs');
 const bot = new Client({
     disableEveryone: false
 });
-const config = require('./config.json')
-const prefix = config.prefix
-const token = config.token
+
+const prefix = prefix
+const token = token
 bot.commands = new Collection();
 bot.prefix = config.prefix,
 bot.aliases = new Collection();
