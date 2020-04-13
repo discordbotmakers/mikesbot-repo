@@ -11,7 +11,7 @@ module.exports={
                 "Yes",
                 "No",
                 "Definetly",
-                "Absoloutely",
+                "Absolutely",
                 "Not in a million years",
                 "no u",
                 "a boom de la caca :laugh:",
