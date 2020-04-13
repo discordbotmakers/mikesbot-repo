@@ -1,4 +1,4 @@
-Welcome to Mike's npm package!
+Welcome to Mike's git repository!
 
 Updates: 
 Version: 1.0.4
@@ -15,6 +15,8 @@ ________________________________
 REQUIREMENTS UPDATED: You now have to make a file under this package and name it ".env" Add this to the file
 
 BOT_TOKEN=REPLACEWITHBOTTOKEN
+
+
 PREFIX=REPLACEWITHBOTPREFIX
 
 _____________________________________________________________________________________________________
