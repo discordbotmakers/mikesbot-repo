@@ -1,7 +1,7 @@
 Welcome to Mike's npm package!
 
 Updates: 
-Version: 1.0.3
+Version: 1.0.4
 Fixed: Double texting bug, removed "link" field on the advertisement command. 
 Fixed the delete role command
 Added a poll command. Usage: (prefix)poll <mentioned channel | channel id> <question>
@@ -12,6 +12,21 @@ Reasons aren't mandetory when banning/kicking a user. If there isn't a reason th
 
 ________________________________
 
+REQUIREMENTS UPDATED: You now have to make a file under this package and name it ".env" Add this to the file
+
+BOT_TOKEN=REPLACEWITHBOTTOKEN
+PREFIX=REPLACEWITHBOTPREFIX
+
+_____________________________________________________________________________________________________
+
+After configurating your bot you can make a file called start.bat and type this in
+
+cd node_modules
+cd mikesbot
+npm start
+PAUSE
+
+___________________________________________________________
 
 First off: In order to get dependencies on your bot you must go to your terminal or type ctrl + ` if you want the Visual Studios Code terminal
 Then you want to type: npm install and press enter
