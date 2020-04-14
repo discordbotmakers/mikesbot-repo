@@ -27,7 +27,7 @@ bot.on('message', async message=>{
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     if(cmd.length == 0 ) return;
-    const command = bot.commands.get(cmd)
+    var command = bot.commands.get(cmd)
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
     if(command) command.run(bot, message,args)
 })
