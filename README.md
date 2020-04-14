@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 Welcome to Mike's npm package!
+=======
+Welcome to Mike's git repository!
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
 
 Updates: 
 Version: 1.0.4
@@ -19,6 +23,8 @@ ________________________________
 REQUIREMENTS UPDATED: You now have to make a file under this package and name it ".env" Add this to the file
 
 BOT_TOKEN=REPLACEWITHBOTTOKEN
+
+
 PREFIX=REPLACEWITHBOTPREFIX
 
 _____________________________________________________________________________________________________
@@ -89,5 +95,8 @@ Remember this is a basic discord bot. Feel free to add commands!
 If you want to start the bot then type npm start or npm run dev in the terminal
 
 Or you can double click the start.bat file on your pc. Once it's ready you'll see an array of you bot commands witha checkamrk on them. And the terminal saying **(your bot name) is now online! Run (your bot prefix)help for any commands help**
+<<<<<<< HEAD
 */
 ```
+=======
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd

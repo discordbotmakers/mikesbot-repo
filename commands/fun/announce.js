@@ -3,11 +3,16 @@ module.exports={
     name: "announce",
     category: "fun",
     description: "Use this command to announce messages to a current channel!",
+<<<<<<< HEAD
     usage: ".say <announcement>",
+=======
+    usage: ".announce <announcement>",
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
     run: async(bot,message,args)=>{
         if(message.deleteable) message.delete();
         if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You need the `Manage Server` permission in order to make an announcement");
         let Str = message.content.slice(bot.prefix.length+8+1)
+<<<<<<< HEAD
         if(!args[0])return message.channel.send("You didn't specify your announcement!")
         
           
@@ -16,6 +21,20 @@ module.exports={
           
         
      } 
+=======
+        if(!args[0])return message.channel.send("You didn't specify your advertisement!")
+        
+           message.channel.send(Str)
+          
+          
+          
+         
+          
+          
+          
+          
+        }
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
 }
 
 

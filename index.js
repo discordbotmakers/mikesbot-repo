@@ -17,7 +17,11 @@ bot.categories = fs.readdirSync("./commands/");
 });
 bot.on('ready',()=>{
     bot.user.setActivity(`${bot.prefix}help`, {type: "WATCHING"}, {url: "https://discord.gg/kugRv6Y"});
+<<<<<<< HEAD
     console.log(`${bot.user.tag} has logged in and is now online.\nVersion: ${Version}\nStats:\n${bot.commands.size} commands\nBot ping is ${bot.ws.ping}ms\nRun ${bot.prefix}help for any command help`)
+=======
+    console.log(`${bot.user.tag} is online and has loaded\n${bot.commands.size} commands\nBot ping is ${bot.ws.ping}ms\nRun ${bot.prefix}help for any command help`)
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
 
 })
 bot.on('message', async message=>{
@@ -32,5 +36,9 @@ bot.on('message', async message=>{
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
     if(command) command.run(bot, message,args)
 })
+<<<<<<< HEAD
 
 bot.login(process.env.BOT_TOKEN)
+=======
+bot.login(process.env.BOT_TOKEN)
+>>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
