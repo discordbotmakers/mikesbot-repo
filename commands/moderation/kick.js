@@ -4,11 +4,12 @@ module.exports={
     description: "Kick a mentioned user or their id",
     category: "moderation",
     usage: ".kick <User ID> (reason)",
+    aliases: ['k'],
     run: async(bot,message,args)=>{
        if(!args[0])return message.channel.send(`Invalid Command Usage: Try\n "``${bot.prefix}kick <User ID> (reason)\n``" `) 
        let User = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
        if(!User)return message.channel.send("Error while trying to find the user/user id. Please try again.")
-       let Reason = message.content.split(`${bot.prefix}kick ${User} `)
+       let Reason = message.content.split(`${bot.prefix}kick ${User} `) 
        if(!args[1]) Reason = "No reason specified";
        if(!User.kickable)return message.channel.send("Error while trying to kick the user. Check to see if it's a valid user id, if the user is in the guild, or if the user has a higher role.")
        if(!message.member.permissions.has("KICK_MEMBERS"))return message.channel.send("Invalid permissions. Requires\n ```CSS\n kick members\n ```")

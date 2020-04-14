@@ -3,11 +3,12 @@ module.exports={
     name: "role",
     description: "Create/delete a role with this command!",
     category: "utility",
+    aliases: ['rc'],
     run: async(bot,message,args)=>{
         if(!message.member.permissions.has("MANAGE_ROLES")) return message.channel.send(`You don't have the manage roles permission ticked on your role in order for you to execute this command. Error`)
 
         if(args[0].toLowerCase()=='create'){
-            let rName = message.content.split(`${bot.prefix}role create `).join("")
+            let rName = message.content.split(`${bot.prefix}role create `).join("") || message.content.split(`${bot.prefix}rc `).join("");
             let rColor;
             args.forEach(arg=>{
                 if(arg.startsWith("#")){

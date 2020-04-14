@@ -9,6 +9,7 @@ const prefix = process.env.PREFIX
 
 bot.commands = new Collection();
 bot.prefix = prefix,
+Version = "v1.0.4";
 bot.aliases = new Collection();
 bot.categories = fs.readdirSync("./commands/");
 ["command"].forEach(handler=>{
@@ -16,7 +17,7 @@ bot.categories = fs.readdirSync("./commands/");
 });
 bot.on('ready',()=>{
     bot.user.setActivity(`${bot.prefix}help`, {type: "WATCHING"}, {url: "https://discord.gg/kugRv6Y"});
-    console.log(`${bot.user.tag} has logged in and is now online.\nStats:\n${bot.commands.size} commands\nBot ping is ${bot.ws.ping}ms\nRun ${bot.prefix}help for any command help`)
+    console.log(`${bot.user.tag} has logged in and is now online.\nVersion: ${Version}\nStats:\n${bot.commands.size} commands\nBot ping is ${bot.ws.ping}ms\nRun ${bot.prefix}help for any command help`)
 
 })
 bot.on('message', async message=>{
@@ -27,8 +28,9 @@ bot.on('message', async message=>{
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     if(cmd.length == 0 ) return;
-    const command = bot.commands.get(cmd)
+    var command = bot.commands.get(cmd)
     if(!command) command = bot.commands.get(bot.aliases.get(cmd));
     if(command) command.run(bot, message,args)
 })
+
 bot.login(process.env.BOT_TOKEN)

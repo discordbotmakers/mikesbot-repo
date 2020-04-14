@@ -1,3 +1,4 @@
+
 Welcome to Mike's npm package!
 
 Updates: 
@@ -6,7 +7,10 @@ Fixed: Double texting bug, removed "link" field on the advertisement command.
 Fixed the delete role command
 Added a poll command. Usage: (prefix)poll <mentioned channel | channel id> <question>
 
-If you use a channel id to initiate a poll the question needs to be longer than 3 characters and it removes the 3 characters from the question. Doesn't apply if you use a mentioned channel.
+If you use a channel id to initiate a poll the question needs to be longer than 3 characters and it removes the 3 characters from the question. Doesn't apply if you use a mentioned channel.*/
+
+
+
 
 Reasons aren't mandetory when banning/kicking a user. If there isn't a reason then it will just state no reason specified as the reason.
 
@@ -19,12 +23,7 @@ PREFIX=REPLACEWITHBOTPREFIX
 
 _____________________________________________________________________________________________________
 
-After configurating your bot you can make a file called start.bat and type this in
-
-cd node_modules
-cd mikesbot
-npm start
-PAUSE
+After configurating your bot you can make a file called start.bat and type this in 
 
 ___________________________________________________________
 
@@ -90,3 +89,5 @@ Remember this is a basic discord bot. Feel free to add commands!
 If you want to start the bot then type npm start or npm run dev in the terminal
 
 Or you can double click the start.bat file on your pc. Once it's ready you'll see an array of you bot commands witha checkamrk on them. And the terminal saying **(your bot name) is now online! Run (your bot prefix)help for any commands help**
+*/
+```
