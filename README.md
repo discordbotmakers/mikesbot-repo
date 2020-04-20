@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 
-Welcome to Mike's npm package!
+Welcome to Mike's Git Repository!
 =======
 Welcome to Mike's git repository!
 >>>>>>> 9b6d282e4971b242524d845a8904044a24918fcd
