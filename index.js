@@ -2,7 +2,7 @@ require('dotenv').config();
 const {Collection, Client, Discord} = require('discord.js');
 const fs = require('fs');
 const db = require('quick.db')
-const { ErelaClient } = require('erela.js')
+
 const bot = new Client({
     disableEveryone: false
 });
