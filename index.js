@@ -5,28 +5,22 @@ const db = require('quick.db')
 const bot = new Client({
     disableEveryone: false
 });
-const prefix = process.env.PREFIX
+
 
 bot.commands = new Collection();
-bot.prefix = prefix,
+bot.prefix = process.env.PREFIX,
 Version = "v1.0.4";
 bot.aliases = new Collection();
 bot.categories = fs.readdirSync("./commands/");
-["command","event"].forEach(handler=>{
+["command"].forEach(handler=>{
     require(`./handlers/${handler}`)(bot);
 });
 
-bot.on('message', async message=>{
-    if(message.author.bot) return;
-    if(!message.content.startsWith(prefix)) return;
-    if(!message.guild) return;
-    if(!message.member) message.member = await message.guild.fetchMember(message);
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
-    if(cmd.length == 0 ) return;
-    var command = bot.commands.get(cmd)
-    if(!command) command = bot.commands.get(bot.aliases.get(cmd));
-    if(command) command.run(bot, message,args)
+bot.on('ready', () => {
+    require('./events/client/ready')(bot)
+})
+bot.on('message', async message => {
+    require('./events/guild/message')(bot,message)
 })
 
 bot.login(process.env.BOT_TOKEN)
