@@ -6,7 +6,7 @@ const bot = new Client({
     disableEveryone: false
 });
 
-
+const prefix = process.env.PREFIX
 bot.commands = new Collection();
 bot.prefix = process.env.PREFIX,
 Version = "v1.0.4";
