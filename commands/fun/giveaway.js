@@ -1,50 +1,49 @@
 const {MessageEmbed} = require('discord.js');
 const ms = require('ms')
 module.exports={
-    name: 'giveaway',
+    name: 'gcreate',
+    aliases: ['giveaway'],
     description: 'Creates a giveaway',
-    usage: '<time><prize>',
+    usage: '<time><prize>', //🎉
     category: 'fun',
     run: async(bot,message,args)=>{
-        if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You need the `Manage Server` permission in order to execute a giveaway!");
-        let timev = message.content.slice(bot.prefix.length+9)
-        if(!timev) return message.channel.send("You didn't specify a time in ms");
+       if(!args[0]) return message.channel.send(`No time specified!`)
         
-        let time = parseInt(timev,10)
-        if(time<= 5000){
-            return message.channel.send('Your time has to be longer than 5seconds!')
+        if(!args[0].endsWith("d")&&!args[0].endsWith("s")&&!args[0].endsWith("h")&&!args[0].endsWith("m")) return message.channel.send(`Incorrect Format. Make sure the time ends with s/d/m/h for the respective time`)
+        if(isNaN(args[0][0])) return message.channel.send(`The time is not a number. Please try again.`)
+        var giveRole = message.guild.roles.cache.find(r => r.name === "Giveaways")
+        if(!message.member.roles.cache.has(giveRole.id) && !message.member.permissions.has("MANAGE_GUILD")){
+             return message.channel.send(`You need a role called **Giveaways** or be able to manage the guild in order to start a giveaway!`)
         }
-        let prize = message.content.split(`${time}`).join("").split(`${bot.prefix}giveaway `).join("")
-        if(!prize) return message.channel.send("There isn't a prize for me to giveaway!")
-        const Embed = new MessageEmbed();
-        Embed.setTitle("Giveaway Time!")
-        Embed.setDescription(`This giveaway was created by <@${message.author.id}>`);
-        Embed.addField(`Prize`, `${prize}`)
-        Embed.addField(`Time`, `This giveaway is ${ms(time)} long!`)
-        Embed.setFooter(`Premium Bot Made By Mike!`)
-        let msg = await message.channel.send(Embed)
-        await msg.react('🎉')
-        function winner(msg){
-            let winner = msg.reactions.cache.get('🎉').users.cache.random().id
-            return winner
-            
-
-        }
-            
-        function reactions(msg){
-            return msg.reactions.cache.size
-        }
+        let channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]) || message.guild.channels.cache.find(c => c.name === `${args[1]}`)
+        if(args[1] === "here") channel = message.channel
+        if(!channel) return message.channel.send(`No channel specified`)
+        
+        let prize = args.slice(2).join(" ")
+        if(!prize) return message.channel.send(`No prize specified`)
+        message.channel.send(`Succesfully started a giveaway in ${channel.name}`)
+        let Embed = new MessageEmbed()
+        Embed.setTitle(`${prize}`)
+        Embed.setDescription(`React with 🎉 to enter.\n\nEnds in ${args[0]}`)
+        Embed.setFooter(`Giveaway made by ${message.author.tag}`)
+        Embed.setTimestamp(Date.now()+ms(args[0]))
+        Embed.setColor(`RANDOM`)
+        let m = await channel.send(Embed)
+        m.react('🎉')
         setTimeout(() => {
-            
-            if(reactions(msg) <= 0) return message.channel.send("I can't host a giveaway with less than 1 reaction")
-            
-            message.channel.send(`The winner is <@${winner(msg)}> . Congrats! You won the prize:  **${prize}**!`);
-            
-        }, time);
-        
-        
-        
-        
+             
+            if(m.reactions.cache.size==0) return channel.send(`No one reacted to the giveaway in order for me to pick a winner.`)
+            let winner = m.reactions.cache.get('🎉').users.cache.filter(u=>!u.bot).random()
+            channel.send(`Congrats ${winner}, you won the **${prize}**!`)
+            var bed = new MessageEmbed()
+            bed.setTitle(`Giveaway Ended`)
+            bed.setDescription(`**${prize.toUpperCase()}**\n\n\n**Host:**<@${message.author.id}>\n**Winner:**${winner}`)
+            bed.setColor(`RANDOM`)
+            bed.setTimestamp(Date.now()+ms(args[0]))
+            bed.setFooter(`Giveaway ended at`)
+            m.edit(bed)
+
+        }, ms(args[0]))
 
     }
 } 
