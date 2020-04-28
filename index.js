@@ -10,6 +10,7 @@ const bot = new Client({
 });
 const prefix = process.env.PREFIX
 
+
 bot.commands = new Collection();
 bot.prefix = prefix,
 Version = "v1.0.4";
@@ -18,6 +19,7 @@ bot.categories = fs.readdirSync("./commands/");
 ["command","event"].forEach(handler=>{
     require(`./handlers/${handler}`)(bot);
 });
+
 
 
 
