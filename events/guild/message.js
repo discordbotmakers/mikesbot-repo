@@ -3,7 +3,7 @@ const Timeout = new Set();
 const prefix = process.env.PREFIX
 const ms = require("ms")
 module.exports=async(bot,message)=>{
-    bot.on('message', async message=>{
+   
         if(message.author.bot) return;
         if(!message.content.startsWith(prefix)) return;
         if(!message.guild) return;
@@ -14,5 +14,5 @@ module.exports=async(bot,message)=>{
         var command = bot.commands.get(cmd)
         if(!command) command = bot.commands.get(bot.aliases.get(cmd));
         if(command) command.run(bot, message,args)
-    })
+    
 }
