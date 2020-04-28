@@ -19,7 +19,9 @@ bot.categories = fs.readdirSync("./commands/");
     require(`./handlers/${handler}`)(bot);
 });
 
-
+bot.on('disconnect', ()=>{
+    bot.channels.cache.get(`698780336439558205`).send(`${bot.user.username} is set to go offline due to an error.`)
+})
 
 
 bot.on('message', async message=>{
