@@ -8,9 +8,9 @@ module.exports={
 
     run: async(bot,message,args)=>{
         if(message.deleteable) message.delete();
-        if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You need the `Manage Server` permission in order to make an announcement");
+        if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You need the `Manage Server` permission in order to make an announcement");
         let Str = message.content.slice(bot.prefix.length+8+1)
-      if(!args[0])return message.channel.send("You didn't specify your advertisement!")
+      if(!args[0])return message.channel.send("You didn't specify your announcement!")
         
            message.channel.send(Str)
           

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Timeout = new Set();
-const {prefix} = process.env.PREFIX
+const prefix = process.env.PREFIX
 const ms = require("ms")
 module.exports=async(bot,message)=>{
     bot.on('message', async message=>{

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {prefix} = process.env.PREFIX
+
 module.exports=bot=>{
     bot.channels.cache.get('698780336439558205').send(`${bot.user.username} has started and is now online.`)
     bot.user.setActivity(`${bot.users.cache.size} users | ${bot.prefix}help`, {type: "STREAMING"}, {url: "https://discord.gg/kugRv6Y"});
