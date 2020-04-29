@@ -21,14 +21,14 @@ module.exports={
         
         let prize = args.slice(2).join(" ")
         if(!prize) return message.channel.send(`No prize specified`)
-        message.channel.send(`Succesfully started a giveaway in ${channel.name}`)
+        message.channel.send(`Succesfully started a giveaway in <#${channel.name}>`)
         let Embed = new MessageEmbed()
         Embed.setTitle(`${prize}`)
         Embed.setDescription(`React with 🎉 to enter.\n\nEnds in ${args[0]}`)
         Embed.setFooter(`Giveaway ends at`)
         Embed.setTimestamp(Date.now()+ms(args[0]))
         Embed.setColor(`RANDOM`)
-        let m = await channel.send("🎉 **Giveaway Time** 🎉", Embed)
+        let m = await channel.send("🎉 **GIVEAWAY TIME** 🎉", Embed)
         m.react('🎉')
         setTimeout(() => {
              
@@ -37,11 +37,11 @@ module.exports={
             channel.send(`Congrats ${winner}, you won the **${prize}**!`)
             var bed = new MessageEmbed()
             bed.setTitle(prize.toUpperCase())
-            bed.setDescription(`**Host:** <${message.author.id}>\n**Winner:** ${winner}\n**Total Entries:** ${m.reactions.cache.get('🎉').users.cache.filter(u => !u.bot).size}`)
+            bed.setDescription(`**Host:** <@${message.author.id}>\n**Winner:** ${winner}\n**Total Entries:** ${m.reactions.cache.get('🎉').users.cache.filter(u => !u.bot).size}`)
             bed.setColor(`RANDOM`)
             bed.setTimestamp(Date.now())
             bed.setFooter(`Giveaway ended at`)
-            m.edit(bed)
+            m.edit("🎉 **GIVEAWAY ENDED** 🎉", bed)
 
         }, ms(args[0]))
 
