@@ -6,11 +6,22 @@ module.exports = {
         const webhooks = await message.channel.fetchWebhooks()
         
         var webhook = webhooks.first();
-        if(!webhook) return message.channel.send(`There isn\'t a webhook created in this channel!`)
+       
         await webhook.send(`${args.join(" ")}`, {
             username: `${message.author.username}`,
             avatarURL: `${message.author.displayAvatarURL()}`,
             
-        }) 
+        }).then(()=>{
+            message.delete()
+        }).catch(err => {
+            message.channel.createWebhook(bot.user.username, bot.user.displayAvatarURL())
+            var hooks = message.channel.fetchWebhooks()
+            var hook = hooks.first()
+                webhook.send(`${args.join(" ")}`, {
+                username: `${message.author.username}`,
+                avatarURL: `${message.author.displayAvatarURL()}`,
+                
+            })
+        })
     }
 }
