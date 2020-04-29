@@ -2,7 +2,7 @@ require('dotenv').config();
 const {Collection, Client, Discord} = require('discord.js');
 const {MessageEmbed} = require('discord.js')
 const fs = require('fs');
-const db = require('quick.db')
+
 const {stripIndents} = require('common-tags')
 
 const bot = new Client({
