@@ -37,7 +37,7 @@ module.exports={
             channel.send(`Congrats ${winner}, you won the **${prize}**!`)
             var bed = new MessageEmbed()
             bed.setTitle(prize.toUpperCase())
-            bed.setDescription(`**Host:** <${message.author.id}>\n**Winner:** ${winner}\n**Total Entries:** ${m.reactions.cache.get('🎉').users.cahce.filter(u => !u.bot).size}`)
+            bed.setDescription(`**Host:** <${message.author.id}>\n**Winner:** ${winner}\n**Total Entries:** ${m.reactions.cache.get('🎉').users.cache.filter(u => !u.bot).size}`)
             bed.setColor(`RANDOM`)
             bed.setTimestamp(Date.now())
             bed.setFooter(`Giveaway ended at`)
