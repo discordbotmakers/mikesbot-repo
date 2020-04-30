@@ -5,7 +5,7 @@ module.exports = {
     description: "Get a users or your avatar!",
     usage: "avatar | avatar <Mention | ID>",
     run: async(bot, message, args) =>{
-        var User = message.guild.members.find(u => u.tag === `${args[0]}`) || message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+        var User = message.guild.members.cache.find(u => u.tag === `${args[0]}`) || message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
         var embed = new MessageEmbed()
         embed.setTitle(`Avatar for ${User.user.tag}`)
