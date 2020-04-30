@@ -9,7 +9,7 @@ module.exports={
     run: async(bot,message,args)=>{
        if(!args[0]) return message.channel.send(`No time specified!`)
         
-        if(!args[0].endsWith("d")&&!args[0].endsWith("s")&&!args[0].endsWith("h")&&!args[0].endsWith("m")) return message.channel.send(`Incorrect Format. Make sure the time ends with s/d/m/h for the respective time`)
+        if(!args[0].endsWith("d")&&!args[0].endsWith("w")&&!args[0].endsWith("s")&&!args[0].endsWith("h")&&!args[0].endsWith("m")) return message.channel.send(`Incorrect Format. Make sure the time ends with s/d/m/h for the respective time`)
         if(isNaN(args[0][0])) return message.channel.send(`The time is not a number. Please try again.`)
         var giveRole = message.guild.roles.cache.find(r => r.name === "Giveaways")
         if(!message.member.roles.cache.has(giveRole.id) && !message.member.permissions.has("MANAGE_GUILD")){
